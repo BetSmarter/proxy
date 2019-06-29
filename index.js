@@ -1,6 +1,8 @@
 require("dotenv").config();
 const fs = require("fs");
 const request = require("request-promise-native");
+const SQUID_INITIAL_CONFIGURATION_DIR =
+  process.env.SQUID_INITIAL_CONFIGURATION_DIR;
 const SQUID_CONFIGURATION_DIR = process.env.SQUID_CONFIGURATION_DIR;
 const API_URL = process.env.API_URL;
 
@@ -35,7 +37,9 @@ const updateInformation = async (email, refreshToken, externalIP) =>
     json: true
   });
 const getSquidConfiguration = () =>
-  fs.readFileSync(SQUID_CONFIGURATION_DIR, { encoding: "utf-8" }).split("\n");
+  fs
+    .readFileSync(SQUID_INITIAL_CONFIGURATION_DIR, { encoding: "utf-8" })
+    .split("\n");
 
 const getStateInformation = () => require("./state.json");
 
