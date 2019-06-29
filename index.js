@@ -2,9 +2,12 @@ require("dotenv").config();
 const fs = require("fs");
 const request = require("request-promise-native");
 const SQUID_INITIAL_CONFIGURATION_DIR =
-  process.env.SQUID_INITIAL_CONFIGURATION_DIR;
-const SQUID_CONFIGURATION_DIR = process.env.SQUID_CONFIGURATION_DIR;
-const API_URL = process.env.API_URL;
+  process.env.SQUID_INITIAL_CONFIGURATION_DIR || "./squid.conf";
+const SQUID_CONFIGURATION_DIR =
+  process.env.SQUID_CONFIGURATION_DIR || "/etc/squid/squid.conf";
+const API_URL =
+  process.env.API_URL ||
+  "https://3runeaq6o2.execute-api.eu-central-1.amazonaws.com/dev/proxy";
 
 const getExternalIP = async () => {
   const externalIPRequest = await request({
