@@ -1,0 +1,16 @@
+{
+  "name": "proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
+  }
+}
