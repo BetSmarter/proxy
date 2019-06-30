@@ -82,7 +82,8 @@ const main = async () => {
   });
   if (RELOAD_SQUID) {
     const reloadSquid = spawnSync("systemctl", ["reload", "squid"]);
-    console.log(reloadSquid);
+    console.log(reloadSquid.stdout.toString());
+    console.log(reloadSquid.stderr.toString());
   }
 };
 
