@@ -9,7 +9,7 @@ const SQUID_CONFIGURATION_DIR =
 const API_URL =
   process.env.API_URL ||
   "https://3runeaq6o2.execute-api.eu-central-1.amazonaws.com/dev/proxy";
-const RELOAD_SQUID = process.env.RELOAD_SQUID === "true";
+const RELOAD_SQUID = (process.env.RELOAD_SQUID || "true") === "true";
 
 const getExternalIP = async () => {
   const externalIPRequest = await request({
