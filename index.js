@@ -1,8 +1,6 @@
 require("dotenv").config();
 const fs = require("fs");
 const request = require("request-promise-native");
-const SQUID_INITIAL_CONFIGURATION_DIR =
-  process.env.SQUID_INITIAL_CONFIGURATION_DIR || "./squid.conf";
 const API_URL =
   process.env.API_URL ||
   "https://3runeaq6o2.execute-api.eu-central-1.amazonaws.com/dev/proxy";
@@ -38,14 +36,18 @@ const saveInformation = ({ sourceIP, refreshToken, externalIP }) => {
 const main = async () => {
   const state = getStateInformation();
   const { email, refreshToken } = state;
-  const externalIP = await getExternalIP();
+  try {
+    const externalIP = await getExternalIP();
 
-  const updatedInformation = await updateInformation(
-    email,
-    refreshToken,
-    externalIP
-  );
-  saveInformation({ ...updatedInformation, externalIP });
+    const updatedInformation = await updateInformation(
+      email,
+      refreshToken,
+      externalIP
+    );
+    saveInformation({ ...updatedInformation, externalIP });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 main();
