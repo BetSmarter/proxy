@@ -25,9 +25,9 @@ const updateInformation = async (email, refreshToken, externalIP) =>
 
 const getStateInformation = () => require("./state.json");
 
-const saveInformation = ({ sourceIP, refreshToken, externalIP }) => {
+const saveInformation = ({ refreshToken, externalIP }) => {
   const previousState = require("./state.json");
-  const mergedState = { ...previousState, sourceIP, refreshToken, externalIP };
+  const mergedState = { ...previousState, refreshToken, externalIP };
   fs.writeFileSync("./state.json", JSON.stringify(mergedState, null, 2));
 };
 
