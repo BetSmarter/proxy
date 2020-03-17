@@ -1,9 +1,7 @@
 require("dotenv").config();
 const fs = require("fs");
 const request = require("request-promise-native");
-const API_URL =
-  process.env.API_URL ||
-  "https://3runeaq6o2.execute-api.eu-central-1.amazonaws.com/dev/proxy";
+const API_URL = process.env.API_URL || "https://api.betsmarter.app/proxy";
 
 const getExternalIP = async () => {
   const externalIPRequest = await request({
